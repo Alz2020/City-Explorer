@@ -1,0 +1,25 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "cwd": "c:/Users/96653/OneDrive - The Manchester College/UCEN MANCHESTER/BSc L6/Advanced Web/Term1/Assignment/PROJECT/City Explorer",
+      "program": "c:/Users/96653/OneDrive - The Manchester College/UCEN MANCHESTER/BSc L6/Advanced Web/Term1/Assignment/PROJECT/City Explorer/build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}
