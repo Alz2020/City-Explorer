@@ -1,8 +1,8 @@
 // Define APIs
-const url1 = 'https://countriesnow.space/api/v0.1/countries/population/cities';
-const url2 = 'https://countriesnow.space/api/v0.1/countries/info?returns=currency,flag,unicodeFlag,dialCode';
-const url3 = 'https://countriesnow.space/api/v0.1/countries/positions';
-const url4 = 'https://countriesnow.space/api/v0.1/countries/info?returns=currency,flag,unicodeFlag,dialCode';
+const dataPopUrl = 'https://countriesnow.space/api/v0.1/countries/population/cities';
+const dataFlaUrl = 'https://countriesnow.space/api/v0.1/countries/info?returns=currency,flag,unicodeFlag,dialCode';
+const dataPosUrl = 'https://countriesnow.space/api/v0.1/countries/positions';
+const dataCurUrl = 'https://countriesnow.space/api/v0.1/countries/info?returns=currency,flag,unicodeFlag,dialCode';
 
 document.getElementById('searchBtn').addEventListener('click', async () => {
     const cityInput = document.getElementById('cityInput').value.trim();
@@ -21,10 +21,10 @@ document.getElementById('searchBtn').addEventListener('click', async () => {
 
     // Create an array of fetch requests
     const fetchRequests = [
-        fetch(url1).then(response => response.json()),
-        fetch(url2).then(response => response.json()),
-        fetch(url3).then(response => response.json()),
-        fetch(url4).then(response => response.json())
+        fetch(dataPopUrl).then(response => response.json()),
+        fetch(dataFlaUrl).then(response => response.json()),
+        fetch(dataPosUrl).then(response => response.json()),
+        fetch(dataCurUrl).then(response => response.json())
     ];
 
     try {
