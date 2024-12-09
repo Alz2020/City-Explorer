@@ -78,7 +78,9 @@ nav ul li {
   border-radius: 4px;
   transition: background-color 0.3s ease;
 }
-
+#searchBtn:hover {
+  background-color: #4b00cc;
+}
 #cityInfo {
   margin-top: 20px;
   font-size: 18px;
@@ -185,6 +187,7 @@ footer p {
   margin: 20px auto;
   max-width: 1200px;
   text-align: center;
+  
 
 }
 table {
