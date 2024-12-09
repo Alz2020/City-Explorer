@@ -31,7 +31,7 @@ document.getElementById('searchBtn').addEventListener('click', async () => {
     try {
         const [data1, data2, data3, data4] = await Promise.all(fetchRequests);
 
-        // Process the JSON responses
+        //  JSON responses
         const cityData = data1.data.find(data => data.city.toLowerCase().startsWith(cityInput.toLowerCase()));
         if (!cityData) {
             cityInfoDiv.innerHTML = `<p style="color: red;">City not found.</p>`;
