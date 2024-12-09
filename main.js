@@ -4,6 +4,7 @@ const dataFlaUrl = 'https://countriesnow.space/api/v0.1/countries/info?returns=c
 const dataPosUrl = 'https://countriesnow.space/api/v0.1/countries/positions';
 const dataCurUrl = 'https://countriesnow.space/api/v0.1/countries/info?returns=currency,flag,unicodeFlag,dialCode';
 
+
 document.getElementById('searchBtn').addEventListener('click', async () => {
     const cityInput = document.getElementById('cityInput').value.trim();
     const cityInfoDiv = document.getElementById('cityInfoDiv');
@@ -14,7 +15,7 @@ document.getElementById('searchBtn').addEventListener('click', async () => {
     // Validate input
     if (!cityInput) {
         alert('Please enter a city name.');
-        return;
+        return
     }
 
     cityInfoDiv.innerHTML = "Loading...";
