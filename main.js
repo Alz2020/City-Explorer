@@ -27,7 +27,7 @@ document.getElementById('searchBtn').addEventListener('click', async () => {
         fetch(dataPosUrl).then(response => response.json()),
         fetch(dataCurUrl).then(response => response.json())
     ];
-
+// promise all method
     try {
         const [data1, data2, data3, data4] = await Promise.all(fetchRequests);
 
