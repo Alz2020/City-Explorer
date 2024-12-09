@@ -69,7 +69,7 @@ document.getElementById('searchBtn').addEventListener('click', async () => {
                 <p>Dial Code: ${countryData.dialCode}</p>
             `;
         }
-
+//handling error
     } catch (error) {
         console.error('Error:', error);
         cityInfoDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
