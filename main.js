@@ -19,7 +19,7 @@ document.getElementById('searchBtn').addEventListener('click', async () => {
 
     cityInfoDiv.innerHTML = "Loading...";
 
-    // Create an array of fetch requests
+    // create an array to fetch
     const fetchRequests = [
         fetch(dataPopUrl).then(response => response.json()),
         fetch(dataFlaUrl).then(response => response.json()),
