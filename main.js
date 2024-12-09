@@ -4,7 +4,7 @@ const dataFlaUrl = 'https://countriesnow.space/api/v0.1/countries/info?returns=c
 const dataPosUrl = 'https://countriesnow.space/api/v0.1/countries/positions';
 const dataCurUrl = 'https://countriesnow.space/api/v0.1/countries/info?returns=currency,flag,unicodeFlag,dialCode';
 
-
+//using trim method 
 document.getElementById('searchBtn').addEventListener('click', async () => {
     const cityInput = document.getElementById('cityInput').value.trim();
     const cityInfoDiv = document.getElementById('cityInfoDiv');
