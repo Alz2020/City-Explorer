@@ -1,0 +1,53 @@
+doctype html
+html
+  head
+    title Edit City - City Finder
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+  body
+    main
+      header
+        nav
+          ul
+            li: a(href="/") Home
+            li: a(href="/cities") Cities
+            li: a(href="/user_dashboard") Dashboard
+            li: a(href="/logout") Logout
+      section.login-container
+        h1 Edit City
+        if error
+          p.error-message(style="color:red")= error
+        form(action="/cities/edit/" + city.id, method="POST")
+          .form-group
+            label(for="name") City Name:
+            input(type="text", name="name", value=city.name, placeholder="Enter city name", required)
+          
+          .form-group
+            label(for="country") Country:
+            input(type="text", name="country", value=city.country, placeholder="Enter country", required)
+          
+          .form-group
+            label(for="population") Population:
+            input(type="number", name="population", value=city.population || '', placeholder="Enter population", min="0")          
+          .form-group
+            label(for="flag") Flag URL:
+            input(type="text", name="flag", value=city.flag || '', placeholder="Enter flag URL")
+          
+          .form-group
+            label(for="unicode_flag") Unicode Flag:
+            input(type="text", name="unicode_flag", value=city.unicode_flag || '', placeholder="Enter unicode flag (e.g., 🇺🇳)")
+          
+          .form-group
+            label(for="dial_code") Dial Code:
+            input(type="text", name="dial_code", value=city.dial_code || '', placeholder="Enter dial code (e.g., +1)")
+          
+          .form-group
+            label(for="lat") Latitude:
+            input(type="number", name="lat", value=city.lat || '', placeholder="Enter latitude", step="any")
+          
+          .form-group
+            label(for="lng") Longitude:
+            input(type="number", name="lng", value=city.lng || '', placeholder="Enter longitude", step="any")
+          
+          .form-group
+            button(type="submit") Update
