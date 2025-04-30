@@ -1,0 +1,65 @@
+doctype html
+html
+  head
+    title Admin Panel
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+  body
+    main
+      header
+        nav
+          ul
+            li: a(href="/") Home
+            li: a(href="/user_dashboard") Dashboard
+            li: a(href="/cities") Cities
+            li: a(href="/logout") Logout
+      if user && (user.isAdmin === 1 || user.is_admin === 1)
+        h1 Admin Panel
+        h2 Welcome, #{user.username}!
+        section
+          h3 Registered Users
+          if message
+            p(class=message.type === 'success' ? 'success-message' : 'error-message', style=message.type === 'success' ? 'color:green' : 'color:red')= message.text          
+          if users.length
+            table(border="1")
+              thead
+                tr
+                  th ID
+                  th Username
+                  th Email
+                  th Role
+                  th Actions
+              tbody
+                each user in users
+                  tr
+                    td= user.id
+                    td= user.username
+                    td= user.email
+                    td= user.isAdmin ? 'Admin' : 'User'
+                    td
+                      a(href='/admin/edit/' + user.id) Edit
+                      |  | 
+                      form(action='/admin/delete/' + user.id, method='POST', style='display:inline')
+                        button(type='submit', onclick='return confirm("Are you sure you want to delete user: #{user.username}?")') Delete
+          else
+            p No users registered yet.
+        section
+          h3 Create New User
+          form(action='/admin/create', method='POST')
+            .form-group
+              label(for='username') Username:
+              input(type='text', name='username', required, minlength='3', maxlength='50', placeholder='Enter username')
+            .form-group
+              label(for='email') Email:
+              input(type='email', name='email', required, placeholder='Enter email')
+            .form-group
+              label(for='password') Password:
+              input(type='password', name='password', required, minlength='8', placeholder='Enter password')
+            .form-group
+              label(for='isAdmin') Admin Privileges:
+              input(type='checkbox', name='isAdmin')
+            .form-group
+              button(type='submit') Create User
+      else
+        h2 Access Denied
+        p You don't have permission to view this page.
