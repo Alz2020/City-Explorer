@@ -1,0 +1,93 @@
+doctype html
+html
+  head
+    title User Dashboard
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css')
+    script(src='https://code.jquery.com/jquery-3.6.0.min.js')
+    script(src='https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js')
+    style.
+      #citySelect { width: 300px; }
+      #cityInfo { margin-top: 20px; }
+  body
+    header
+      nav
+        ul
+          li: a(href="/") Home
+          li: a(href="/logout") Logout
+    main
+      h1 Welcome, #{user.username}!
+      p Your email: #{user.email}
+      h2: a(href="/cities") Manage Cities
+      h3 Explore Cities      
+      select#citySelect(name="citySelect")
+        option(value="") -- Select a City --
+        if cities && cities.length > 0
+          each city in cities
+            option(value=city.id)= city.name
+      div#cityInfo
+    script.
+      $(document).ready(function() {
+        const initialCities = !{JSON.stringify(cities.map(city => ({ id: city.id, text: city.name })))};        
+        $('#citySelect').select2({
+          placeholder: 'Search for a city',
+          allowClear: true,
+          width: '300px',
+          data: initialCities,
+          ajax: {
+            url: '/user_dashboard/cities/search',
+            dataType: 'json',
+            delay: 250,
+            data: function(params) {
+              return {
+                q: params.term || '',
+                page: params.page || 1
+              };
+            },
+            processResults: function(data) {
+              console.log('Search results:', data);
+              return {
+                results: data.cities.map(city => ({
+                  id: city.id,
+                  text: city.name
+                })),
+                pagination: {
+                  more: data.more
+                }
+              };
+            },
+            cache: true
+          },
+          minimumInputLength: 0
+        });
+        $('#citySelect').on('change', function() {
+          const cityId = $(this).val();
+          console.log('Selected city ID:', cityId);
+          if (cityId) {
+            $.ajax({
+              url: `/user_dashboard/city/${cityId}`,
+              method: 'GET',
+              success: function(data) {
+                console.log('City data received:', data);
+                console.log('Raw unicode_flag:', data.unicode_flag);
+                const unicodeFlag = data.unicode_flag && /^[\uD83C-\uDBFF\uDC00-\uDFFF]+$/.test(data.unicode_flag) ? data.unicode_flag : 'N/A';
+                $('#cityInfo').html(`
+                  <h3>${data.name || 'Unknown'}</h3>
+                  <p><strong>Population:</strong> ${data.population || 'N/A'}</p>
+                  <p><strong>Country:</strong> ${data.country || 'N/A'}</p>
+                  <p><strong>Dial Code:</strong> ${data.dial_code || 'N/A'}</p>
+                  <p><strong>Coordinates:</strong> (${data.lat || 'N/A'}, ${data.lng || 'N/A'})</p>
+                  <p><strong>Flag:</strong> <img src="${data.flag || ''}" alt="Flag" width="50" onerror="this.style.display='none'"/></p>
+                  <p><strong>Unicode Flag:</strong> ${unicodeFlag}</p>
+                `);
+              },
+              error: function(xhr, status, error) {
+                console.error('AJAX error:', error);
+                $('#cityInfo').html(`<p style="color: red;">Error loading city data: ${error}</p>`);
+              }
+            });
+          } else {
+            $('#cityInfo').empty();
+          }
+        });
+      });

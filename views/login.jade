@@ -1,0 +1,38 @@
+doctype html
+html
+  head
+    title Login - City Finder
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+  body
+    main
+      header
+        nav
+          ul
+            li
+              a(href="/") Home
+            li
+              a(href="/signup") Sign up
+      section.login-container
+        h1 Login
+        if typeof error !== 'undefined' && error
+          p.error-message(style="color:red")= error
+        form(action="/login", method="POST")          
+          if typeof redirectUrl !== 'undefined' && redirectUrl
+            input(type="hidden", name="redirectUrl", value=redirectUrl)          
+          .form-group
+            label(for="email") Email:
+            input(type="email", 
+                  name="email", 
+                  placeholder="Enter your email", 
+                  required)
+          .form-group
+            label(for="password") Password:
+            input(type="password", 
+                  name="password", 
+                  placeholder="Enter your password", 
+                  required)          
+          .form-group
+            button(type="submit") Login 
+
+

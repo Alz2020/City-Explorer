@@ -1,0 +1,29 @@
+extends ../layout
+block content
+    h1 Admin Dashboard
+form(action='/admin/users/add', method='POST')
+    input(type='text', name='username', placeholder='Username')
+    input(type='password', name='password', placeholder='Password')
+    select(name='role')
+    option(value='user') user
+    option(value='admin') admin
+    button(type='submit') Add User
+    table
+    tr
+    th ID
+    th Username
+    th Role
+    th Actions
+    each user in users
+    tr
+        td #{user.id}
+        td #{user.username}
+        td #{user.role}
+        td
+        form(action='/admin/users/update/' + user.id, method='POST')
+            input(type='text', name='username', value=user.username)
+            select(name='role')
+            option(value='user', selected=user.role=='user') user
+            option(value='admin', selected=user.role=='admin') admin
+            button(type='submit') Update
+        a(href='/admin/users/delete/' + user.id) Delete

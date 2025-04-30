@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title Logout - City Finder
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    script.
+      setTimeout(function() {
+        window.location.href = '/';
+      }, 2000);
+  body
+    main
+      header
+        nav
+          ul
+            li: a(href="/") Home
+      h1 Logout
+      p You have been logged out successfully.
+      p Redirecting to home in 2 seconds...
