@@ -1,0 +1,40 @@
+doctype html
+html
+  head
+    title Edit User - Admin Panel
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+  body
+    main
+      header
+        nav
+          ul
+            li: a(href="/") Home
+            li: a(href="/user_dashboard") Dashboard
+            li: a(href="/cities") Cities
+            li: a(href="/admin") Admin Panel
+            li: a(href="/logout") Logout
+      if currentUser && (currentUser.isAdmin === 1 || currentUser.is_admin === 1)
+        h1 Edit User
+        h2 Welcome, #{currentUser.username}!
+        section.login-container
+          if error
+            p.error-message(style="color:red")= error
+          form(action='/admin/edit/' + user.id, method='POST')
+            .form-group
+              label(for='username') Username:
+              input(type='text', name='username', value=user.username, required, minlength='3', maxlength='50', placeholder='Enter username')
+            .form-group
+              label(for='email') Email:
+              input(type='email', name='email', value=user.email, required, placeholder='Enter email')
+            .form-group
+              label(for='password') New Password (optional):
+              input(type='password', name='password', placeholder='Enter new password (leave blank to keep current)')
+            .form-group
+              label(for='isAdmin') Admin Privileges:
+              input(type='checkbox', name='isAdmin', checked=user.isAdmin)
+            .form-group
+              button(type='submit') Update User
+      else
+        h2 Access Denied
+        p You don't have permission to view this page.

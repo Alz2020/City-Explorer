@@ -1,0 +1,42 @@
+doctype html
+html
+  head
+    title Sign Up - City Finder
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+  body
+    main
+      header
+        nav
+          ul
+            li
+              a(href="/") Home
+            li
+              a(href="/login") Login
+      section.login-container
+        h1 Sign Up
+        if typeof error !== 'undefined' && error
+          p.error-message(style="color:red")= error
+        form(action="/signup", method="POST")
+          .form-group
+            label(for="username") Username:
+            input(type="text", 
+                  name="username", 
+                  placeholder="Choose a username", 
+                  required,
+                  minlength="3")          
+          .form-group
+            label(for="email") Email:
+            input(type="email", 
+                  name="email", 
+                  placeholder="Enter your email", 
+                  required)          
+          .form-group
+            label(for="password") Password:
+            input(type="password", 
+                  name="password", 
+                  placeholder="Create a password", 
+                  required,
+                  minlength="8")          
+          .form-group
+            button(type="submit") Register
