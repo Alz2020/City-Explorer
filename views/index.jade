@@ -1,0 +1,36 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="/stylesheets/style.css")
+    title City Finder
+  body
+    main
+      header
+        nav
+          ul
+            li: a(href="/") Home
+            li: a(href="/admin") Admin
+            li: a(href="/login") Users
+        h2 Find the perfect city for your next adventure
+        .mask
+          img(src="images/img/img.jpg", alt="A scenic view of a city")
+      section.container
+        h1 City Finder
+        label(for="cityInput") Your Favourite City:
+        input#cityInput(type="text", placeholder="Enter city name")
+        button#searchBtn Search
+        p#cityInfoDiv
+      h2 Popular Cities
+      section.popular-cities
+        each city in cities
+          .city-card
+            img.city(src='/images/img/' + city.img, alt=city.name)
+            h3= city.name
+      footer
+        p
+          | Created by 
+          a(href="https://github.com/Alz2020/City-Explorer.git") Ali Alzabidi
+        p © 2025 City Finder. All rights reserved.
+      script(src="javascripts/main.js", defer)
