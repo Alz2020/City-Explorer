@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title Error - #{message || 'Application Error'}
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='/stylesheets/error.css')
+  body
+    main
+      h1= message || 'An Error Occurred'
+      if typeof error !== 'undefined' && error && error.status
+        h2= error.status
+      if typeof error !== 'undefined' && error && error.stack && process.env.NODE_ENV !== 'production'
+        pre #{error.stack}
+      else
+        p No additional error information available.
+      nav
+        a(href='/') Return to Home
+        if typeof user !== 'undefined' && user
+          a(href='/logout') Logout
