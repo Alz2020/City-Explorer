@@ -1,64 +1,64 @@
-body {
+  body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     text-align: center;
     margin: 0;
     padding: 0;
-  }
-  header {
+}
+header {
     background-color: #f1f1e9;
     color: black;
     padding: 20px;
     text-align: center;
-  }
-  header h1 {
+}
+header h1 {
     font-size: 32px;
     margin: 10px 0;
-  }
-  header h2 {
+}
+header h2 {
     font-size: 24px;
     margin: 10px 0;
-  }
-  header p {
+}
+header p {
     font-size: 16px;
     margin: 10px;
-  }
-  header img{
+}
+header img {
     max-width: 100%;
     height: auto;
     margin: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 2.);
-  }
-  nav ul{
-    list-style:none;
+}
+nav ul {
+    list-style: none;
     display: flex;
     padding: 0;
     justify-content: center;
     margin: 0;
-  }
-  .city {
+}
+.city {
     cursor: pointer;
-  }
-  nav ul li {
+}
+nav ul li {
     margin: 0 15px;
-  }
-  .mask {
+}
+.mask {
     -webkit-mask-image: linear-gradient(black, transparent);
     mask-image: linear-gradient(black, transparent);
-  }
-  .container {
+}
+.container {
     margin-top: 50px;
-  }
-  #cityInput {
+}
+#cityInput {
     padding: 10px;
     width: 300px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-bottom: 20px;
-  }
-  #searchBtn {
+}
+#searchBtn {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
@@ -67,31 +67,31 @@ body {
     border: none;
     border-radius: 4px;
     transition: background-color 0.3s ease;
-  }
-  #searchBtn:hover {
+}
+#searchBtn:hover {
     background-color: #4b00cc;
-  }
-  #cityInfo {
+}
+#cityInfo {
     margin-top: 20px;
     font-size: 18px;
     font-weight: bold;
     color: #2c3e50;
-  }
-  .city-details {
+}
+.city-details {
     background-color: #fff;
     padding: 20px;
     margin: 10px auto;
     width: 50%;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  h2{
+}
+h2 {
     text-align: center;
     margin-bottom: 20px;
     font-size: 28px;
     text-decoration: underline;
-  }
-  footer {
+}
+footer {
     background-color: #333;
     color: black;
     padding: 20px;
@@ -99,105 +99,155 @@ body {
     position: relative;
     bottom: 0;
     background-color: #ccc;
-  }
-  footer ul li {
+}
+footer ul li {
     margin: 0 15px;
     list-style: none;
-  }
-  footer p {
+}
+footer p {
     margin: 0;
     font-size: 14px;
-  }
-  footer a {
+}
+footer a {
     color: black;
     text-decoration: none;
-  }
-  @media screen and (max-width: 768px)  {
+}
+@media screen and (max-width: 768px) {
     .city-details {
-      width: 80%;
+        width: 80%;
     }
-  }
-  @media screen and (max-width: 600px) {
+}
+@media screen and (max-width: 600px) {
     #cityInput {
-      background-color:#ebee94;
-      color: rgb(255, 255, 255);
+        background-color: #ebee94;
+        color: rgb(255, 255, 255);
     }
     footer {
-      background-color: #333;
-      color: white;
-      padding: 20px;
-      text-align: center;
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
     }
-  footer a {
-    color: #007BFF;
-    text-decoration: none;
-  }
-  footer p {
-    margin: 5px 0;
-    font-size: 14px;
-  }
-  }
-  @media screen and (max-width: 600px) {
+    footer a {
+        color: #007BFF;
+        text-decoration: none;
+    }
+    footer p {
+        margin: 5px 0;
+        font-size: 14px;
+    }
     nav ul {
-      flex-direction: column;}
-    nav ul li {
-      margin: 10px 0;
+        flex-direction: column;
     }
-  }
-  .popular-cities li{
+    nav ul li {
+        margin: 10px 0;
+    }
+}
+.popular-cities li {
     width: 200px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.);
     overflow: hidden;
     transition: transform 0.35 ease;
-  }
-  .popular-cities img{
+}
+.popular-cities img {
     width: 100%;
-    height:150px;
+    height: 150px;
     object-fit: cover;
     border-bottom: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 1.);
-  }
-  .popular-cities{
+}
+.popular-cities {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px ;
+    gap: 20px;
     margin: 20px auto;
     max-width: 1200px;
-    text-align: center;  
-  }
-  table {
+    text-align: center;
+}
+table {
     border-collapse: collapse;
     width: 100%;
-  }
-  th, td {
+}
+th, td {
     border: 1px solid black;
     padding: 8px;
     text-align: left;
-  }
-  th {
+}
+th {
     background-color: #f2f2f2;
-  }
-  .city-info-table{
+}
+.city-info-table {
     width: 100;
     border-collapse: collapse;
     margin: 20px auto;
     font-size: 16px;
     background-color: #f1f1e9;
-  }
-  .city-info-table thead{
-    background-color:#007BFF;
+}
+.city-info-table thead {
+    background-color: #007BFF;
     color: black;
-  }
-  .city-info-table th, .city-info-table td{
+}
+.city-info-table th, .city-info-table td {
     border: 1px solid #ddd;
     padding: 12px;
-  }
-  .city-info-table th{
+}
+.city-info-table th {
     text-align: center;
     font-weight: bold;
-  }
-  .city-info-table td {
+}
+.city-info-table td {
     vertical-align: middle;
-  }
+}
+.city-table {
+    width: 100%;
+    max-width: 700px; 
+    margin: 20px auto;
+    border-collapse: collapse;
+    font-size: 14px; 
+    background-color: #f1f1e9; 
+    font-family: Arial, sans-serif;
+}
+.city-table th,
+.city-table td {
+    padding: 6px;
+    border: 1px solid #ddd; 
+    text-align: left;
+    max-width: 80px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.city-table th {
+    background-color: #007BFF; 
+    color: black;
+    font-weight: bold;
+    text-align: center;
+}
+.city-table tr:hover {
+    background-color: #f9f9f9; 
+}
+.city-table a,
+.city-table button {
+    color: #007BFF; 
+    text-decoration: none;
+    cursor: pointer;
+    margin-right: 8px;
+}
+.city-table button {
+    background: none;
+    border: none;
+    padding: 0;
+}
+.city-table button:hover,
+.city-table a:hover {
+    text-decoration: underline;
+}
+.table-wrapper {
+    overflow-x: auto;
+    margin: 0 10px;
+}
+.city-table td {
+    font-family: 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif;
+}
