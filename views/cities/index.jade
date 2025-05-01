@@ -12,7 +12,6 @@ html
             li: a(href="/") Home
             li: a(href="/user_dashboard") Dashboard
             li: a(href="/logout") Logout
-
       section
         h1 Manage Cities
         p Welcome, #{user.username}!
@@ -20,30 +19,29 @@ html
         if cities.length === 0
           p No cities found.
         else
-          table
-            thead
-              tr
-                th Name
-                th Country
-                th Population
-                th Flag
-                th Unicode Flag
-                th Dial Code
-                th Latitude
-                th Longitude
-                th Actions
-            tbody
-              each city in cities
+          .table-wrapper
+            table.city-table
+              thead
                 tr
-                  td= city.name
-                  td= city.country
-                  td= city.population || 'N/A'
-                  td= city.flag ? city.flag : 'N/A'
-                  td= city.unicode_flag || 'N/A'
-                  td= city.dial_code || 'N/A'
-                  td= city.lat || 'N/A'
-                  td= city.lng || 'N/A'
-                  td
-                    a(href="/cities/edit/" + city.id) Edit
-                    form(action="/cities/delete/" + city.id, method="POST", style="display:inline")
-                      button(type="submit") Delete
+                  th Name
+                  th Country
+                  th Population
+                  th Flag
+                  th Dial Code
+                  th Latitude
+                  th Longitude
+                  th Actions
+              tbody
+                each city in cities
+                  tr
+                    td= city.name
+                    td= city.country
+                    td= city.population || 'N/A'
+                    td= city.unicode_flag ? city.unicode_flag : 'N/A'
+                    td= city.dial_code || 'N/A'
+                    td= city.lat || 'N/A'
+                    td= city.lng || 'N/A'
+                    td
+                      a(href="/cities/edit/" + city.id) Edit
+                      form(action="/cities/delete/" + city.id, method="POST", style="display:inline")
+                        button(type="submit") Delete
